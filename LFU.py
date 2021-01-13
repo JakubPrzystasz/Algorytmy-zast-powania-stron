@@ -1,0 +1,2 @@
+def lfu():
+    print("Jestem")

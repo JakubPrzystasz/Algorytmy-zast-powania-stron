@@ -1,0 +1,2 @@
+def lru():
+    print("Jestem")

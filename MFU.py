@@ -1,0 +1,2 @@
+def mfu():
+    print("Jestem")
