@@ -1,1 +1,0 @@
-# Algorytmy-zast-powania-stron
