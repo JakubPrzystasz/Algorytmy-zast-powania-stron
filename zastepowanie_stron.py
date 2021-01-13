@@ -33,6 +33,7 @@ def podanie_danych():
     print("Wprowadzone dane:")
     print()
     wyswietl_tabelke(odwolania)
+    return ilosc_ramek,liczba_odwolan,odwolania
 
 
 
@@ -40,7 +41,7 @@ def podanie_danych():
 
 # wybór użytkownika i wywołanie danego algorytmu
 
-podanie_danych()
+ilosc_ramek,liczba_odwolan,odwolania = podanie_danych()
 wybor = 0
 ilosc_brakow_stron = 0
 
@@ -57,6 +58,8 @@ while( wybor != 8 ):
     print("7.Chcę zmienić dane ( np chcę żeby priorytety miały znaczenie )")
     print("8.Koniec")
 
+    pom_odwolania = odwolania.copy()
+
 
     try:
         wybor = int(input(">>>>:"))
@@ -69,32 +72,32 @@ while( wybor != 8 ):
 
     if( wybor == 1 ):
         print("FIFO:")
-        fifo()
+        fifo(ilosc_ramek,liczba_odwolan,pom_odwolania)
 
         
     if( wybor == 2 ):
         print("Algorytm optymalny:")
-        algorytm_optymalny()
+        algorytm_optymalny(ilosc_ramek,liczba_odwolan,pom_odwolania)
 
         
     if( wybor == 3 ):
         print("LRU ( Least Recently Used ):")
-        lru()
+        lru(ilosc_ramek,liczba_odwolan,pom_odwolania)
 
         
     if( wybor == 4 ):
         print("LFU ( Least Frequently Used ):")
-        lfu()
+        lfu(ilosc_ramek,liczba_odwolan,pom_odwolania)
 
 
     if( wybor == 5 ):
         print("MFU ( Most Frequently Used ):")
-        mfu()
+        mfu(ilosc_ramek,liczba_odwolan,pom_odwolania)
         
 
     if( wybor == 6 ):
         print("Algorytm drugiej szansy:")
-        algorytm_drugiej_szansy()
+        algorytm_drugiej_szansy(ilosc_ramek,liczba_odwolan,pom_odwolania)
         
         
     if( wybor == 7 ):
