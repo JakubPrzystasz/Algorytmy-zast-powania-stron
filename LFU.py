@@ -1,6 +1,7 @@
 def znajdz_minimum_slownik(strony_odwolania,ramki,oprocz,x): # oprocz - nie moze wybrac tej samej ramki bo sie zapętli
     dostepne_strony = []
     indeks = 0
+    czy_kilka = 0  # czy powtarzają się minima jeśli nie to zmienna oprócz musi wynosić -1 bo jej nie używamy
 
     for i in range(len(ramki)): # przepisuje wszystkie strony jakie zawierają ramki
         dostepne_strony.append(ramki[i][x]) # indeksy dostepne_strony odpowiadają indeksom ramki
@@ -11,6 +12,13 @@ def znajdz_minimum_slownik(strony_odwolania,ramki,oprocz,x): # oprocz - nie moze
     for j in range(len(dostepne_strony)): # znajduje wartość najmniejszą
         if( min > strony_odwolania[dostepne_strony[j]] ):
             min = strony_odwolania[dostepne_strony[j]]
+
+    for j in range(len(dostepne_strony)):  # znajduje ile razy wystąpiła wartość najmniejsza
+        if (min == strony_odwolania[dostepne_strony[j]]):
+            czy_kilka += 1
+
+    if (czy_kilka == 1):  # bo jeżeli jest jedna wartość minimum no to musimy ją wziąść nie mamy wyboru
+        oprocz = -1
 
     for k in range(len(dostepne_strony)): # sprawdza 1 wystąpienie wartości minimum, omijając indeks oprócz
         if( strony_odwolania[dostepne_strony[k]] == min and k != oprocz ):
@@ -120,6 +128,6 @@ def lfu(ilosc_ramek,liczba_odwolan,odwolania):
     print(braki_stron)
 
 
-#o = [1,2,3,4,1,2,5,1,2,3,4,5]
+o = [1,2,3,4,1,2,5,1,2,3,4,5]
 #fifo(3,12,o)
-#lfu(4, 12, o)
+lfu(4, 12, o)
