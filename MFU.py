@@ -125,6 +125,6 @@ def mfu(ilosc_ramek,liczba_odwolan,odwolania):
     print("Braki stron:")
     print(braki_stron)
 
-o = [1,2,3,4,1,2,5,1,2,3,4,5]
+#o = [1,2,3,4,1,2,5,1,2,3,4,5]
 # fifo(3,12,o)
-mfu(4, 12, o)
+#mfu(4, 12, o)

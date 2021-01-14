@@ -128,6 +128,6 @@ def lfu(ilosc_ramek,liczba_odwolan,odwolania):
     print(braki_stron)
 
 
-o = [1,2,3,4,1,2,5,1,2,3,4,5]
+#o = [1,2,3,4,1,2,5,1,2,3,4,5]
 #fifo(3,12,o)
-lfu(4, 12, o)
+#lfu(4, 12, o)
