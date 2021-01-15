@@ -72,62 +72,8 @@ def fifo(ilosc_ramek,liczba_odwolan,odwolania):
                     aktualne_strony.append(odwolania[x])  # dodaje na koncu listy
                     break
 
-
-
-
-
-
         x += 1  # kolejne chwile czasu
 
-    # else
-    #   strona = aktualne_strony.pop(0) # usuwa najstarsza strone czyli z poczatku listy
-    #   for i in range(len(ramki))
-    #
-    #           ramki[i][x] == odwolania[x]
-    # aktualne_strony.append(odwolania[x]) # dodaje na koncu listy
-    #aktualne_strony.append(odwolania[x])
-
-
-
- 
-    '''
-    for znacznik in range(liczba_odwolan): # zawsze na początku żadna ramka nie będzie zajęta
-        if (id_ramki > ilosc_ramek - 1):  # przekroczono ilosc ramek
-            id_ramki = 0
-
-        #pom_id = id_ramki
-        pom_id = 0
-        for i in range(0,ilosc_ramek): # sprawdza czasy istnienia danych w ramkach
-            if( i == id_ramki-1 ): # bo spr. inne bramki niż aktualna
-                pom_id = pom_id + 1  # spr. kolejną ramkę
-                continue
-            if( czas_bycia[i] == 1 ):
-                id_ramki = pom_id
-                czas_bycia[id_ramki] = 0 # zerujemy czas ramki bo została wybrana
-                break # ta ramka ma być wybrana pierwsza
-            pom_id = pom_id + 1 # spr. kolejną ramkę
-        
-        if( id_ramki > ilosc_ramek-1 ): # przekroczono ilosc ramek
-            id_ramki = 0
-
-        if( x != 0 ): # no pierwsza wpisana wartość nigdy nie będzie się powtarzać
-            if( ramki[id_ramki][znacznik-1] == odwolania[znacznik] ): #ramka ma już w pamięci to odwołanie
-                czas_bycia[id_ramki] = czas_bycia[id_ramki] + 1 # ramka z tymi danymi zostaje w pamięci i starzeje się
-                x = x + 1
-                id_ramki = id_ramki + 1
-                continue
-
-        ramki[id_ramki][znacznik] = odwolania[znacznik] #ramka nie ma w pamięci tego odwołania
-        # pojawia się tu błąd strony
-        wypelnij(ramki,ilosc_ramek,liczba_odwolan,x)
-        braki_stron = braki_stron + 1
-
-        ramki[id_ramki][znacznik] = str(odwolania[znacznik]) + "." # żeby zaznaczyć że jest błąd strony, wywołuje 2 raz
-                                                       # bo funkcja wypełnij by skopiowała to zaznaczenie na inne warotści
-        id_ramki = id_ramki + 1 # zmiana bramki
-        x = x + 1 # kolejne odwołanie
-        
-    '''
     # wypisanie danych
 
     print("Kropka wskazuje miejsce wystąpienia błedy braku strony")
