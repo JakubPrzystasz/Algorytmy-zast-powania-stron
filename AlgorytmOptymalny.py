@@ -1,31 +1,27 @@
 def wybierz_odpowiednia_ramke(odwolania, ramki, oprocz,x):  # oprocz - nie moze wybrac tej samej ramki bo sie zapętli
     dostepne_strony = []
-    indeks = 0
-    pom_j = 0 # tu będzie trzymane najdalsze odwołanie
-    czy_kilka = 0 # czy powtarzają się maxima jeśli nie to zmienna oprócz musi wynosić -1 bo jej nie używamy
-    czy_znalaziono = 1 # jeśli strona występująca w ramce nie wystąpi w dalszych odwołaniach to usuwamy stronę z ramki
 
     for i in range(len(ramki)):  # przepisuje wszystkie strony jakie zawierają ramki
         dostepne_strony.append(ramki[i][x])  # indeksy dostepne_strony odpowiadają indeksom ramki
 
-    #for i in range(len(ramki)): # jeśli strona występująca w ramce nie wystąpi to usuwamy stronę z ramki
-     #   pass
+    najdalsza = 0 # zmienna pomocnicza zawirajaca index najdalszego odwołania
+    id_ramki = 0 # jaka ramka ma byc wybrana
+    indeks = 0 # przechowuje aktualny indeks
 
-    for i in range(len(ramki)): # iteruje po naszych ramkach
-        czy_znalaziono = 0 # zakładamy że nie znaleziono
-        for j in range(len(odwolania)-1, x, -1):  # iteruje od ostatniej wartości w tablicy odwołania do x-owej
-                                                # dzięki temu określi, do której strony z listy dostępne_strony nastąpi najpóźniej odwołąnie
+    for i in range(len(ramki)):
+        if( not(dostepne_strony[i] in odwolania[x:]) ): # jeśli już nie ma tej strony w odwołaniach
+            id_ramki = i # no to zastępujemy stronę z tej ramki
+            return  id_ramki
 
-            if (odwolania[j] == dostepne_strony[i]): # znalazło najdalsze odwołanie w odwołaniach, które wystąpiło w ramce
-                czy_znalaziono = 1
-                if( j > pom_j ): # and i != oprocz ): # znaleziono jeszcze dalsze odwołanie
-                    pom_j = j # to jest nowe najdalsze odwołanie
-                    indeks = i  # ma wtedy zastąpić tę stronę w ramce | wykona sie to wiele razy aż znajdzie najdalsze odwołanie
-        if( czy_znalaziono == 0 ): # nie ma w odwołaniach tej strony więc usuwamy ją z ramki
-            indeks = i
-            return  indeks
 
-    return indeks
+        indeks = odwolania[x:].index(dostepne_strony[i]) # znajduje pierwsze wystąpienie strony w odwolaniach
+        if( indeks > najdalsza ): # jeśli indeks strony którą przechowuje ramka jest większy niż indeks strony poprzedniej ramki
+            id_ramki = i # wybieramy tę ramkę
+            najdalsza = indeks # ten indeks jest najdalszy
+
+
+
+    return id_ramki
 
 
 def sprawdz_ramki(ramki, wartosc, x):
@@ -123,6 +119,8 @@ def algorytm_optymalny(ilosc_ramek,liczba_odwolan,odwolania):
     print("Braki stron:")
     print(braki_stron)
 
-o = [1,2,3,4,1,2,5,1,2,3,4,5]
-# fifo(3,12,o)
-algorytm_optymalny(4, 12, o)
+#o = [1,2,3,4,1,2,5,1,2,3,4,5]
+#algorytm_optymalny(4, 12, o)
+
+#o = [5,4,3,2,5,4,1,3,2,4,5,4,2,5,1]
+#algorytm_optymalny(3, 15, o)
