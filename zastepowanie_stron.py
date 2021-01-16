@@ -3,18 +3,18 @@ from AlgorytmOptymalny import algorytm_optymalny
 from LRU import lru
 from LFU import lfu
 from MFU import mfu
-from AlgorytmDrugiejSzansy import algorytm_drugiej_szansy
+from secondChance import algorytm_drugiej_szansy
 
 
 def wyswietl_tabelke(tab):
-    for element in tab: # wypisanie elementów tablicy
+    for element in tab:  # wypisanie elementów tablicy
         print(element, end=" | ")
     print()
 
 
 def podanie_danych():
     print("Witaj w algorytmie zastępowania stron")
-    
+
     # podanie danych przez użytkownika
     ilosc_ramek = int(input("Podaj liczbę dostępnych ramek:"))
     liczba_odwolan = int(input("Podaj liczbę odwołań:"))
@@ -24,7 +24,7 @@ def podanie_danych():
 
     # wczytywanie danych podanych przez użytkownika
     print("Podaj wszystkie odwołania:")
-    
+
     for i in range(liczba_odwolan):
         odwolania[i] = int(input("Podaj odwolanie [" + str(i+1) + "]:"))
 
@@ -33,35 +33,16 @@ def podanie_danych():
     print("Wprowadzone dane:")
     print()
     wyswietl_tabelke(odwolania)
-    return ilosc_ramek,liczba_odwolan,odwolania
-
-
-
+    return ilosc_ramek, liczba_odwolan, odwolania
 
 
 # wybór użytkownika i wywołanie danego algorytmu
 
-ilosc_ramek,liczba_odwolan,odwolania = podanie_danych()
+ilosc_ramek, liczba_odwolan, odwolania = podanie_danych()
 wybor = 0
 ilosc_brakow_stron = 0
 
-while( wybor != 8 ):
-    print()
-    print()
-    print("Założenia:")
-    print("----------")
-    print()
-    print("Jak mamy do wyboru usuniecie strony z danej ramki")
-    print("I mamy sytuację że każda ramka nadaje sie do usunięcia z niej storny")
-    print()
-    print("TO:")
-    print("---------------------------------------------------------------------------")
-    print("  - Wybieramy ramkę z najmniejszym indeksem!")
-    print("    ( np. z ramek 1,2,3,4 bierzemy ramkę 1 )")
-    print("")
-    print("  - Dodatkowo jeśli mamy tą samą sytuację ale ramka 1 już wcześniej była użyta to wybierze ramkę 2")
-    print("---------------------------------------------------------------------------")
-
+while(wybor != 8):
     print()
     print("Wybierz jaki algorytm chcesz użyć:")
     print("1.FIFO")
@@ -75,7 +56,6 @@ while( wybor != 8 ):
 
     pom_odwolania = odwolania.copy()
 
-
     try:
         wybor = int(input(">>>>:"))
     except:
@@ -83,37 +63,30 @@ while( wybor != 8 ):
 
     print()
 
-
-
-    if( wybor == 1 ):
+    if(wybor == 1):
         print("FIFO:")
-        fifo(ilosc_ramek,liczba_odwolan,pom_odwolania)
+        fifo(ilosc_ramek, liczba_odwolan, pom_odwolania)
 
-        
-    if( wybor == 2 ):
+    if(wybor == 2):
         print("Algorytm optymalny:")
-        algorytm_optymalny(ilosc_ramek,liczba_odwolan,pom_odwolania)
+        algorytm_optymalny(ilosc_ramek, liczba_odwolan, pom_odwolania)
 
-        
-    if( wybor == 3 ):
+    if(wybor == 3):
         print("LRU ( Least Recently Used ):")
-        lru(ilosc_ramek,liczba_odwolan,pom_odwolania)
+        lru(ilosc_ramek, liczba_odwolan, pom_odwolania)
 
-        
-    if( wybor == 4 ):
+    if(wybor == 4):
         print("LFU ( Least Frequently Used ):")
-        lfu(ilosc_ramek,liczba_odwolan,pom_odwolania)
+        lfu(ilosc_ramek, liczba_odwolan, pom_odwolania)
 
-
-    if( wybor == 5 ):
+    if(wybor == 5):
         print("MFU ( Most Frequently Used ):")
-        mfu(ilosc_ramek,liczba_odwolan,pom_odwolania)
-        
+        mfu(ilosc_ramek, liczba_odwolan, pom_odwolania)
 
-    if( wybor == 6 ):
+    if(wybor == 6):
         print("Algorytm drugiej szansy:")
-        algorytm_drugiej_szansy(ilosc_ramek,liczba_odwolan,pom_odwolania)
-        
-        
-    if( wybor == 7 ):
-        ilosc_ramek,liczba_odwolan,odwolania = podanie_danych()
+        algorytm_drugiej_szansy(
+            ilosc_ramek, liczba_odwolan, pom_odwolania)
+
+    if(wybor == 7):
+        ilosc_ramek, liczba_odwolan, odwolania = podanie_danych()
