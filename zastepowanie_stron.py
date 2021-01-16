@@ -3,8 +3,8 @@ from AlgorytmOptymalny import algorytm_optymalny
 from LRU import lru
 from LFU import lfu
 from MFU import mfu
-from AlgorytmDrugiejSzansy import algorytm_drugiej_szansy
-
+#from AlgorytmDrugiejSzansy import algorytm_drugiej_szansy
+from secondChance import algorytm_drugiej_szansy
 
 def wyswietl_tabelke(tab):
     for element in tab: # wypisanie elementów tablicy
