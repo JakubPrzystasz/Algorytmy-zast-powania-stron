@@ -46,6 +46,21 @@ wybor = 0
 ilosc_brakow_stron = 0
 
 while( wybor != 8 ):
+    print()
+    print()
+    print("Założenia:")
+    print("----------")
+    print()
+    print("Jak mamy do wyboru usuniecie strony z danej ramki")
+    print("I mamy sytuację że każda ramka nadaje sie do usunięcia z niej storny")
+    print()
+    print("TO:")
+    print("---------------------------------------------------------------------------")
+    print("  - Wybieramy ramkę z najmniejszym indeksem!")
+    print("    ( np. z ramek 1,2,3,4 bierzemy ramkę 1 )")
+    print("")
+    print("  - Dodatkowo jeśli mamy tą samą sytuację ale ramka 1 już wcześniej była użyta to wybierze ramkę 2")
+    print("---------------------------------------------------------------------------")
 
     print()
     print("Wybierz jaki algorytm chcesz użyć:")
@@ -55,7 +70,7 @@ while( wybor != 8 ):
     print("4.LFU ( Least Frequently Used )")
     print("5.MFU ( Most Frequently Used )")
     print("6.Algorytm drugiej szansy")
-    print("7.Chcę zmienić dane ( np chcę żeby priorytety miały znaczenie )")
+    print("7.Chcę zmienić dane ( ponieważ mam inne odwołania, lub inne dane )")
     print("8.Koniec")
 
     pom_odwolania = odwolania.copy()
@@ -101,4 +116,4 @@ while( wybor != 8 ):
         
         
     if( wybor == 7 ):
-        podanie_danych()
+        ilosc_ramek,liczba_odwolan,odwolania = podanie_danych()
