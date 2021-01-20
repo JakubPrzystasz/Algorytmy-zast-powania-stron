@@ -3,7 +3,7 @@ from AlgorytmOptymalny import algorytm_optymalny
 from LRU import lru
 from LFU import lfu
 from MFU import mfu
-#from AlgorytmDrugiejSzansy import algorytm_drugiej_szansy
+# from AlgorytmDrugiejSzansy import algorytm_drugiej_szansy
 from secondChance import algorytm_drugiej_szansy
 
 
@@ -20,6 +20,10 @@ def podanie_danych():
     try:
         ilosc_ramek = int(input("Podaj liczbe dostępnych ramek:"))
     except ValueError:
+        print("Podano niepoprawne dane")
+        exit(-1)
+
+    if(ilosc_ramek < 1):
         print("Podano niepoprawne dane")
         exit(-1)
 
