@@ -6,46 +6,60 @@ from MFU import mfu
 #from AlgorytmDrugiejSzansy import algorytm_drugiej_szansy
 from secondChance import algorytm_drugiej_szansy
 
+
 def wyswietl_tabelke(tab):
-    for element in tab: # wypisanie elementów tablicy
+    for element in tab:  # wypisanie elementów tablicy
         print(element, end=" | ")
     print()
 
 
 def podanie_danych():
     print("Witaj w algorytmie zastępowania stron")
-    
-    # podanie danych przez użytkownika
-    ilosc_ramek = int(input("Podaj liczbę dostępnych ramek:"))
-    liczba_odwolan = int(input("Podaj liczbę odwołań:"))
 
-    # definiowanie rozmiarów list
-    odwolania = [0 for x in range(liczba_odwolan)]
+    # podanie danych przez użytkownika
+    try:
+        ilosc_ramek = int(input("Podaj liczbe dostępnych ramek:"))
+    except ValueError:
+        print("Podano niepoprawne dane")
+        exit(-1)
 
     # wczytywanie danych podanych przez użytkownika
-    print("Podaj wszystkie odwołania:")
-    
-    for i in range(liczba_odwolan):
-        odwolania[i] = int(input("Podaj odwolanie [" + str(i+1) + "]:"))
+    print("Podaj wszystkie odwołania - wprowadz 0 aby zakończyć:")
+
+    odwolania = []
+
+    _input = 1
+    cnt = 1
+    while _input > 0:
+        try:
+            _input = int(input("Podaj odwolanie [" + str(cnt) + "]: "))
+        except ValueError:
+            print("Podano niepoprawne dane")
+            exit(-1)
+
+        if(_input < 0):
+            print("Podano niepoprawne dane")
+            exit(-1)
+        if(_input > 0):
+            odwolania.append(_input)
+            cnt += 1
 
     # to zobaczy użytkownik żeby sprawdzić czy dobrze dane wprowadził
     print()
     print("Wprowadzone dane:")
     print()
     wyswietl_tabelke(odwolania)
-    return ilosc_ramek,liczba_odwolan,odwolania
-
-
-
+    liczba_odwolan = len(odwolania)
+    return ilosc_ramek, liczba_odwolan, odwolania
 
 
 # wybór użytkownika i wywołanie danego algorytmu
 
-ilosc_ramek,liczba_odwolan,odwolania = podanie_danych()
+ilosc_ramek, liczba_odwolan, odwolania = podanie_danych()
 wybor = 0
 ilosc_brakow_stron = 0
 
-while( wybor != 8 ):
+while(wybor != 8):
     print()
     print()
     print("Założenia:")
@@ -75,7 +89,6 @@ while( wybor != 8 ):
 
     pom_odwolania = odwolania.copy()
 
-
     try:
         wybor = int(input(">>>>:"))
     except:
@@ -83,37 +96,29 @@ while( wybor != 8 ):
 
     print()
 
-
-
-    if( wybor == 1 ):
+    if(wybor == 1):
         print("FIFO:")
-        fifo(ilosc_ramek,liczba_odwolan,pom_odwolania)
+        fifo(ilosc_ramek, liczba_odwolan, pom_odwolania)
 
-        
-    if( wybor == 2 ):
+    if(wybor == 2):
         print("Algorytm optymalny:")
-        algorytm_optymalny(ilosc_ramek,liczba_odwolan,pom_odwolania)
+        algorytm_optymalny(ilosc_ramek, liczba_odwolan, pom_odwolania)
 
-        
-    if( wybor == 3 ):
+    if(wybor == 3):
         print("LRU ( Least Recently Used ):")
-        lru(ilosc_ramek,liczba_odwolan,pom_odwolania)
+        lru(ilosc_ramek, liczba_odwolan, pom_odwolania)
 
-        
-    if( wybor == 4 ):
+    if(wybor == 4):
         print("LFU ( Least Frequently Used ):")
-        lfu(ilosc_ramek,liczba_odwolan,pom_odwolania)
+        lfu(ilosc_ramek, liczba_odwolan, pom_odwolania)
 
-
-    if( wybor == 5 ):
+    if(wybor == 5):
         print("MFU ( Most Frequently Used ):")
-        mfu(ilosc_ramek,liczba_odwolan,pom_odwolania)
-        
+        mfu(ilosc_ramek, liczba_odwolan, pom_odwolania)
 
-    if( wybor == 6 ):
+    if(wybor == 6):
         print("Algorytm drugiej szansy:")
-        algorytm_drugiej_szansy(ilosc_ramek,liczba_odwolan,pom_odwolania)
-        
-        
-    if( wybor == 7 ):
-        ilosc_ramek,liczba_odwolan,odwolania = podanie_danych()
+        algorytm_drugiej_szansy(ilosc_ramek, liczba_odwolan, pom_odwolania)
+
+    if(wybor == 7):
+        ilosc_ramek, liczba_odwolan, odwolania = podanie_danych()
